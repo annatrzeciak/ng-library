@@ -1,3 +1,5 @@
+import { BookRoutingModule } from './books/book-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,7 +19,8 @@ import { CoreModuleModule } from './core-module/core-module.module';
   imports: [
     BrowserModule,
     BooksModule,
-
+    AppRoutingModule,
+    BookRoutingModule,
     CoreModuleModule,
     HttpModule
   ],
