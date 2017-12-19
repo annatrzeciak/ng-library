@@ -6,7 +6,7 @@
           <tr>
             <th class="text-center" scope="col">Tytuł</th>
             <th class="text-center" scope="col">Autor</th>
-            <th class="text-center" scope="col">Kategoria</th>
+
             <th class="text-center" scope="col">Wydawnictwo</th>
             <th class="text-center" scope="col">Rok wydania</th>
             <th class="text-center" scope="col"></th>
@@ -17,7 +17,7 @@
           <tr [ngClass]="{'table-danger':book.isBorrowed}" *ngFor="let book of books">
             <td class="text-center font-weight-bold">{{book.title}}</td>
             <td class="text-center">{{book.author}}</td>
-            <td class="text-center">{{book.category}}</td>
+
             <td class="text-center">{{book.housePublishing}}</td>
             <td class="text-center">{{book.year}}</td>
             <td class="text-center" *ngIf="book.isBorrowed">oddaj książkę</td>

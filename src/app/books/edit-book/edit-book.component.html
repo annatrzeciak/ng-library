@@ -1,0 +1,64 @@
+<p class="data-header info-text">Edytuj {{book.title}}</p>
+<div class="data-container">
+  <form [formGroup]="bookForm">
+    <div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Tytuł</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="title" type="text" class="form-control" placeholder="Tytuł">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p  class="text-right">Autor</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="author" type="text" class="form-control" placeholder="Autor">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p  class="text-right">Wydawnictwo</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="housePublishing" type="text" class="form-control" placeholder="Wydawnictwo">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Rok</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="year" type="number" step="1" min="1900" max="2099" class="form-control" placeholder="Wydawnictwo">
+        </div>
+      </div>
+          <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">ISBN</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="ISBN" type="text" class="form-control" placeholder="ISBN">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p  class="text-right">Wypożyczona</p>
+        </div>
+        <div class="col-sm-6">
+          <input  formControlName="isBorrowed" type="checkbox" class="form-control" placeholder="Wydawnictwo">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">ID czytelnika</p>
+        </div>
+        <div class="col-sm-6">
+          <input  formControlName="idReader" type="text" class="form-control" placeholder="ID Czytelnika">
+        </div>
+       </div>
+      <button [disabled]="bookForm.invalid" (click)="updateBook()" type="submit" class="btn btn-primary float-right">Aktualizuj dane</button>
+    </div>
+  </form>
+</div>

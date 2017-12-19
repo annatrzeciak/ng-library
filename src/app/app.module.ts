@@ -10,6 +10,7 @@ import { BooksModule } from './books/books.module';
 import { BooksService } from './books/books.service';
 import { HttpModule } from '@angular/http';
 import { CoreModuleModule } from './core-module/core-module.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,10 +20,11 @@ import { CoreModuleModule } from './core-module/core-module.module';
   imports: [
     BrowserModule,
     BooksModule,
-    AppRoutingModule,
-    BookRoutingModule,
+    HttpModule,
     CoreModuleModule,
-    HttpModule
+    AppRoutingModule,
+    FormsModule,
+    BookRoutingModule
   ],
   providers: [BooksService],
   bootstrap: [AppComponent]

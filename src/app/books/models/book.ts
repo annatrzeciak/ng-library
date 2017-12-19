@@ -6,8 +6,7 @@ export interface Book {
     author: string;
     housePublishing: string;
     year: number;
-    category: Array<string>;
-    ISBN: string;
+    ISBN: number;
     isBorrowed: boolean;
     idReader: string;
 }

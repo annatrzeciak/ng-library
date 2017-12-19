@@ -21,5 +21,7 @@ export class BookDetailsComponent implements OnInit {
   loadBook() {
     this.book = this.route.snapshot.data['book'];
   }
-
+  goToEditBook(book: Book) {
+    this.router.navigate(['/editBook', book._id.$oid]);
+  }
 }
