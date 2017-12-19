@@ -1,7 +1,7 @@
 <div class="content">
   <div class="row">
     <div class="col-sm-12 ">
-      <table *ngIf="books.length>0; else noBooks" class="table table-striped">
+      <table *ngIf="books.length>0; else noBooks" class="table bg-light table-striped">
         <thead>
           <tr>
             <th class="text-center" scope="col">Tytuł</th>
@@ -22,7 +22,7 @@
             <td class="text-center">{{book.year}}</td>
             <td class="text-center" *ngIf="book.isBorrowed">oddaj książkę</td>
             <td class="text-center" *ngIf="!book.isBorrowed">wypożycz książkę</td>
-            <td class="text-center">
+            <td class="text-center" (click)='goToBookDetails(book)'>
               <i class="material-icons">info_outline</i>
             </td>
 

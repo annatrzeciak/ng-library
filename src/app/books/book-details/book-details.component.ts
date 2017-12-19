@@ -1,3 +1,6 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { BooksService } from './../books.service';
+import { Book } from './../models/book';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  book: Book;
 
-  constructor() { }
+  constructor(private booksService: BooksService, private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.loadBook();
+
+  }
+  loadBook() {
+    this.book = this.route.snapshot.data['book'];
   }
 
 }

@@ -4,7 +4,7 @@ import { RouterModule, Route } from '@angular/router';
 import { BookResolve } from './book-resolve.service';
 
 
-const BOOKS_ROOTS: Route[] = [{ path: 'books/:id', component: BookDetailsComponent , resolve: { book: BookResolve } }}];
+const BOOKS_ROOTS: Route[] = [{ path: 'books/:id', component: BookDetailsComponent , resolve: { book: BookResolve } }];
 
 @NgModule({
     imports: [RouterModule.forChild(BOOKS_ROOTS)],

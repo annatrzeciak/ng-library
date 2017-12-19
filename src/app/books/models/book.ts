@@ -1,7 +1,7 @@
 export interface Book {
-    // _id: {
-    //     $oid: string
-    // };
+    _id: {
+        $oid: string
+    };
     title: string;
     author: string;
     housePublishing: string;

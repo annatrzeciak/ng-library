@@ -1,6 +1,7 @@
 import { BooksService } from './../books.service';
 import { Book } from './../models/book';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class BooksListComponent implements OnInit {
   books: Book[] = [];
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private router: Router) { }
 
   ngOnInit() {
     this.loadBooks();
@@ -20,5 +21,10 @@ export class BooksListComponent implements OnInit {
     this.booksService.getBooks().subscribe((books) => {
       this.books = books;
     });
+  }
+  goToBookDetails(book: Book) {
+
+    this.router.navigate(['/books', book._id.$oid]);
+
   }
 }

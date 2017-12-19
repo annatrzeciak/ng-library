@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Http } from '@angular/http';
 import { Book } from './models/book';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BooksService {
