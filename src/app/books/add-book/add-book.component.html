@@ -8,6 +8,7 @@
         </div>
         <div class="col-sm-6">
           <input formControlName="title" type="text" class="form-control" placeholder="Tytuł">
+          <p *ngIf="!bookForm.get('title').valid && bookForm.get('phone').dirty" class="title">To pole jest wymagane</p>
         </div>
       </div>
       <div class="row form-group">
@@ -16,6 +17,8 @@
         </div>
         <div class="col-sm-6">
           <input formControlName="author" type="text" class="form-control" placeholder="Autor">
+          <p *ngIf="!bookForm.get('author').valid && bookForm.get('author').dirty" class="error">To pole jest wymagane</p>
+          
         </div>
       </div>
       <div class="row form-group">
@@ -40,6 +43,8 @@
         </div>
         <div class="col-sm-6">
           <input formControlName="ISBN" type="text" class="form-control" placeholder="ISBN">
+          <p *ngIf="!bookForm.get('ISBN').valid && bookForm.get('ISBN').dirty" class="error">To pole jest wymagane</p>
+          
         </div>
       </div>
       <div class="row form-group">

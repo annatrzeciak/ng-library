@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr [ngClass]="{'table-danger':book.isBorrowed}" *ngFor="let book of books">
+          <tr [ngClass]="{'borrowed':book.isBorrowed}" *ngFor="let book of books">
             <td class="text-center font-weight-bold">{{book.title}}</td>
             <td class="text-center">{{book.author}}</td>
 
@@ -23,7 +23,7 @@
             <td class="text-center" *ngIf="book.isBorrowed">oddaj książkę</td>
             <td class="text-center" *ngIf="!book.isBorrowed">wypożycz książkę</td>
             <td class="text-center" (click)='goToBookDetails(book)'>
-              <i class="material-icons">info_outline</i>
+              <i class="fa fa-info btn btn-outline-primary"></i>
             </td>
 
           </tr>

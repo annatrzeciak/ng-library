@@ -1,11 +1,13 @@
-<div class= "sidebar bg-dark">
-    <img src="../../../assets/logo.png" alt="logo library" class="logo">
-    <nav>
-      <ul>
-        <li [routerLink]="['/books']" [routerLinkActive]="'active'">Książki</li>
-        <li [routerLink]="['/addBook']" [routerLinkActive]="'active'"><i class="material-icons">add_circle_outline</i> Dodaj książkę</li>
-        <li>Czytelnicy</li>
-        <li><i class="material-icons">add_circle_outline</i> Dodaj czytelnika</li>
-      </ul>
-    </nav>
-  </div>
+<div class="sidebar bg-dark">
+  <img src="../../../assets/logo.png" alt="logo library" class="logo">
+  <nav>
+    <ul>
+      <li [routerLink]="['/books']" [routerLinkActive]="'active'">Książki</li>
+      <li [routerLink]="['/addBook']" [routerLinkActive]="'active'">
+        <i class="material-icons">add_circle_outline</i> Dodaj książkę</li>
+      <li [routerLink]="['/readers']" [routerLinkActive]="'active'">Czytelnicy</li>
+      <li [routerLink]="['/addReader']" [routerLinkActive]="'active'">
+        <i class="material-icons">add_circle_outline</i> Dodaj czytelnika</li>
+    </ul>
+  </nav>
+</div>

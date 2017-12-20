@@ -9,7 +9,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 const BOOKS_ROOTS: Route[] = [
     { path: 'books/:id', component: BookDetailsComponent, resolve: { book: BookResolve } },
     { path: 'editBook/:id', component: EditBookComponent, resolve: { book: BookResolve } }
-    { path: 'addBook', component: AddBookComponent }
+  
 ];
 
 @NgModule({

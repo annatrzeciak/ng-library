@@ -19,8 +19,9 @@ export class BooksListComponent implements OnInit {
 
   loadBooks() {
     this.booksService.getBooks().subscribe((books) => {
-      this.books = books;
+      this.books = books.sort((a, b) => a.title.toUpperCase() > b.title.toUpperCase() ? 1 : -1);
     });
+
   }
   goToBookDetails(book: Book) {
 

@@ -5,9 +5,7 @@
     text-transform: uppercase;
   }
 
-  .material-icons{
-      cursor: pointer;
-  }
+ 
   .no-books, .info-text{
     padding: 20px;
     text-transform: uppercase;
@@ -15,4 +13,7 @@
     font-weight: 700;
     background: white;
     text-align: center;
+}
+.borrowed{
+  opacity: 0.5;
 }

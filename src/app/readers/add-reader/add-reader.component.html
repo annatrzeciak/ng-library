@@ -1,0 +1,71 @@
+<p class="data-header info-text">Dodaj Nowego czytelnika</p>
+<div class="data-container">
+  <form [formGroup]="readerForm">
+    <div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Imię</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="name" type="text" class="form-control" placeholder="Imię">
+          <p *ngIf="!readerForm.get('name').valid && readerForm.get('name').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Nazwisko</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="surname" type="text" class="form-control" placeholder="Nazwisko">
+          <p *ngIf="!readerForm.get('surname').valid && readerForm.get('surname').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Kod pocztowy</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="postalCode" type="text" class="form-control" placeholder="Kod pocztowy">
+          <p *ngIf="!readerForm.get('postalCode').valid && readerForm.get('postalCode').dirty" class="error">Podaj kod pocztowy w formacie: XX-XXX</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Miejscowość</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="city" type="text"  class="form-control" placeholder="Miejscowość">
+          <p *ngIf="!readerForm.get('city').valid && readerForm.get('city').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Ulica</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="street" type="text" class="form-control" placeholder="Ulica">
+          <p *ngIf="!readerForm.get('street').valid && readerForm.get('street').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+           <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Numer domu</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="houseNumber" type="text" class="form-control" placeholder="Numer domu">
+          <p *ngIf="!readerForm.get('houseNumber').valid && readerForm.get('houseNumber').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <p class="text-right">Telefon</p>
+        </div>
+        <div class="col-sm-6">
+          <input formControlName="phone" type="text" class="form-control" placeholder="Telefon">
+          <p *ngIf="!readerForm.get('phone').valid && readerForm.get('phone').dirty" class="error">To pole jest wymagane</p>
+        </div>
+      </div>
+      <button [disabled]="readerForm.invalid" (click)="addReader()" type="submit" class="btn btn-primary float-right">Dodaj czytelnika</button>
+    </div>
+  </form>
+</div>

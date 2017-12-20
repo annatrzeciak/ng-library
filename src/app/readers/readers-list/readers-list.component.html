@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="row">
+    <div class="col-sm-12 ">
+      <table *ngIf="readers.length>0; else noReaders" class="table bg-light table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Imię</th>
+            <th class="text-center" scope="col">Nazwisko</th>
+
+            <th class="text-center" scope="col">Adres</th>
+            <th class="text-center" scope="col">Telefon</th>
+            <th class="text-center" scope="col">Ilość wypożyczonych książek</th>
+            <th class="text-center" scope="col">Więcej</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reader of readers">
+            <td class="text-center ">{{reader.name}}</td>
+            <td class="text-center">{{reader.surname}}</td>
+
+            <td class="text-center">{{reader.street}} {{reader.houseNumber}}; {{reader.postalCode}} {{reader.city}}</td>
+            <td class="text-center">{{reader.phone}}</td>
+            <td class="text-center">{{reader.numberBooks}}</td>
+            <td class="text-center" (click)='goToReaderDetails(reader)'>
+              <i class="fa fa-info btn btn-outline-primary"></i>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+      <ng-template #noReaders>
+        <div class="col-sm-12 no-books">
+          <p>Brak czytelników do wyświetlenia</p>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
