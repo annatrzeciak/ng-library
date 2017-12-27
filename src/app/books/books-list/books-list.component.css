@@ -17,3 +17,17 @@
 .borrowed{
   opacity: 0.5;
 }
+.more{
+  display: flex;
+  justify-content: center;  
+
+}
+.button{
+
+  height: 28px;
+  width: 28px;
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,3 +1,4 @@
+import { BorrowBookModule } from './borrow-book/borrow-book.module';
 import { ReadersRoutingModule } from './readers/reader-routing.module';
 import { ReadersModule } from './readers/readers.module';
 import { BookRoutingModule } from './books/book-routing.module';
@@ -14,10 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { ReadersService } from './readers/readers.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-  ],
+     ],
   imports: [
     BrowserModule,
     BooksModule,
@@ -27,7 +29,10 @@ import { ReadersService } from './readers/readers.service';
     FormsModule,
     BookRoutingModule,
     ReadersRoutingModule,
-    ReadersModule
+    ReadersModule,
+    BorrowBookModule,
+    SharedModuleModule
+
   ],
   providers: [BooksService, ReadersService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <p class="data-header info-text">Edytuj {{book.title}}</p>
 <div class="data-container">
+
   <form [formGroup]="bookForm">
     <div>
       <div class="row form-group">
@@ -12,7 +14,7 @@
       </div>
       <div class="row form-group">
         <div class="col-sm-6">
-          <p  class="text-right">Autor</p>
+          <p class="text-right">Autor</p>
         </div>
         <div class="col-sm-6">
           <input formControlName="author" type="text" class="form-control" placeholder="Autor">
@@ -20,7 +22,7 @@
       </div>
       <div class="row form-group">
         <div class="col-sm-6">
-          <p  class="text-right">Wydawnictwo</p>
+          <p class="text-right">Wydawnictwo</p>
         </div>
         <div class="col-sm-6">
           <input formControlName="housePublishing" type="text" class="form-control" placeholder="Wydawnictwo">
@@ -34,7 +36,7 @@
           <input formControlName="year" type="number" step="1" min="1900" max="2099" class="form-control" placeholder="Wydawnictwo">
         </div>
       </div>
-          <div class="row form-group">
+      <div class="row form-group">
         <div class="col-sm-6">
           <p class="text-right">ISBN</p>
         </div>
@@ -44,10 +46,10 @@
       </div>
       <div class="row form-group">
         <div class="col-sm-6">
-          <p  class="text-right">Wypożyczona</p>
+          <p class="text-right">Wypożyczona</p>
         </div>
         <div class="col-sm-6">
-          <input  formControlName="isBorrowed" type="checkbox" class="form-control" placeholder="Wydawnictwo">
+          <input formControlName="isBorrowed" type="checkbox" class="form-control" placeholder="Wydawnictwo">
         </div>
       </div>
       <div class="row form-group">
@@ -55,9 +57,9 @@
           <p class="text-right">ID czytelnika</p>
         </div>
         <div class="col-sm-6">
-          <input  formControlName="idReader" type="text" class="form-control" placeholder="ID Czytelnika">
+          <input formControlName="idReader" type="text" class="form-control" placeholder="ID Czytelnika">
         </div>
-       </div>
+      </div>
       <button [disabled]="bookForm.invalid" (click)="updateBook()" type="submit" class="btn btn-primary float-right">Aktualizuj dane</button>
     </div>
   </form>

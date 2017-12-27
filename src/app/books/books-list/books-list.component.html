@@ -1,3 +1,4 @@
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <div class="content">
   <div class="row">
     <div class="col-sm-12 ">
@@ -20,22 +21,41 @@
 
             <td class="text-center">{{book.housePublishing}}</td>
             <td class="text-center">{{book.year}}</td>
-            <td class="text-center" *ngIf="book.isBorrowed">oddaj książkę</td>
-            <td class="text-center" *ngIf="!book.isBorrowed">wypożycz książkę</td>
-            <td class="text-center" (click)='goToBookDetails(book)'>
-              <i class="fa fa-info btn btn-outline-primary"></i>
+            <td class="text-center" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
+            <td class="text-center" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
+            <td class="text-center more">
+              <i class="button fa fa-info btn btn-outline-primary" (click)='goToBookDetails(book)'></i>
+              <i class="button fa fa-times btn btn-outline-primary" (click)='showDeleteModalWindow(book)'></i>
             </td>
 
           </tr>
         </tbody>
 
       </table>
-      <ng-template #noBooks>
+      <ng-template #noBooks *ngIf='!showSpinner'>
         <div class="col-sm-12 no-books">
           <p>Brak książek do wyświetlenia</p>
         </div>
       </ng-template>
-
+    </div>
+  </div>
+</div>
+<div id="deleteBook" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Usuń książkę</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Jesteś pewnien/pewna, że chcesz usunąć książkę?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)='deleteBook(true)' data-dismiss="modal">Tak, usuń książkę </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+      </div>
     </div>
   </div>
 </div>

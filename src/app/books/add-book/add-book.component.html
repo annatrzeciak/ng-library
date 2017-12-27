@@ -1,5 +1,6 @@
-<p class="data-header info-text">Dodaj nową książkę</p>
+<app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <div class="data-container">
+  <p class="data-header info-text">Dodaj nową książkę</p>
   <form [formGroup]="bookForm">
     <div>
       <div class="row form-group">
@@ -8,7 +9,7 @@
         </div>
         <div class="col-sm-6">
           <input formControlName="title" type="text" class="form-control" placeholder="Tytuł">
-          <p *ngIf="!bookForm.get('title').valid && bookForm.get('phone').dirty" class="title">To pole jest wymagane</p>
+          <p *ngIf="!bookForm.get('title').valid && bookForm.get('title').dirty" class="title">To pole jest wymagane</p>
         </div>
       </div>
       <div class="row form-group">
@@ -18,7 +19,7 @@
         <div class="col-sm-6">
           <input formControlName="author" type="text" class="form-control" placeholder="Autor">
           <p *ngIf="!bookForm.get('author').valid && bookForm.get('author').dirty" class="error">To pole jest wymagane</p>
-          
+
         </div>
       </div>
       <div class="row form-group">
@@ -44,23 +45,7 @@
         <div class="col-sm-6">
           <input formControlName="ISBN" type="text" class="form-control" placeholder="ISBN">
           <p *ngIf="!bookForm.get('ISBN').valid && bookForm.get('ISBN').dirty" class="error">To pole jest wymagane</p>
-          
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <p class="text-right">Wypożyczona</p>
-        </div>
-        <div class="col-sm-6">
-          <input formControlName="isBorrowed" type="checkbox" class="form-control" placeholder="Wydawnictwo">
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <p class="text-right">ID czytelnika</p>
-        </div>
-        <div class="col-sm-6">
-          <input formControlName="idReader" type="text" class="form-control" placeholder="ID Czytelnika">
+
         </div>
       </div>
       <button [disabled]="bookForm.invalid" (click)="addBook()" type="submit" class="btn btn-primary float-right">Dodaj książkę</button>

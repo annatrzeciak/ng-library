@@ -11,6 +11,7 @@ import { Reader } from '../models/reader';
 })
 export class ReadersListComponent implements OnInit {
   readers: Reader[] = [];
+  showSpinner: boolean = true;
 
   constructor(private readersService: ReadersService, private router: Router) { }
 
@@ -19,19 +20,19 @@ export class ReadersListComponent implements OnInit {
   }
 
   loadReaders() {
+    this.showSpinner = true;
     this.readersService.getReaders().subscribe((readers) => {
       this.readers = readers.map((reader) => {
         reader.numberBooks = reader.books.length || 0;
         return reader;
       }).sort((a, b) => a.surname.toUpperCase() > b.surname.toUpperCase() ? 1 : -1);
 
-
+      this.showSpinner = false;
     });
-    this.readers = this.readers.sort((a, b) => a.surname > b.surname ? 1 : -1);
   }
   goToReaderDetails(reader: Reader) {
-
+    this.showSpinner = true;
     this.router.navigate(['/readers', reader._id.$oid]);
-
+    
   }
 }

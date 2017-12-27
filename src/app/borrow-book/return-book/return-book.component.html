@@ -1,0 +1,46 @@
+<div class="data-container">
+  <p class="data-header info-text">Zwróć książkę: </p>
+  <table class="table bg-light table-striped">
+    <tbody>
+      <tr>
+        <td class="text-center font-weight-bold">ID</td>
+        <td class="text-center">{{book?._id.$oid}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Tytuł</td>
+        <td class="text-center">{{book.title}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Autor</td>
+        <td class="text-center">{{book?.author}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Wydawnictwo</td>
+        <td class="text-center">{{book?.housePublishing}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Rok wydania</td>
+        <td class="text-center">{{book?.year}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">ISBN</td>
+        <td class="text-center">{{book?.ISBN}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">ID czytelnika</td>
+        <td class="text-center">{{book?.idReader}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+  <button class="btn btn-primary" (click)="returnThisBook()">Zwróć</button>
+
+</div>

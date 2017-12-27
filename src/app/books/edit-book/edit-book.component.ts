@@ -14,6 +14,7 @@ export class EditBookComponent implements OnInit {
 
   book: Book;
   bookForm: FormGroup;
+  showSpinner: boolean = true;
 
   constructor(private booksService: BooksService, private router: Router,
     private formBuilder: FormBuilder, private route: ActivatedRoute) {
@@ -26,7 +27,9 @@ export class EditBookComponent implements OnInit {
 
   }
   loadBook() {
+    this.showSpinner = true;
     this.book = this.route.snapshot.data['book'];
+    this.showSpinner = false;
 
   }
   buildBookForm() {
@@ -36,15 +39,17 @@ export class EditBookComponent implements OnInit {
       author: [this.book.author, Validators.required],
       housePublishing: this.book.housePublishing,
       year: this.book.year,
-      ISBN: [this.book.ISBN,Validators.required],
+      ISBN: [this.book.ISBN, Validators.required],
       isBorrowed: this.book.isBorrowed,
       idReader: this.book.idReader
     });
   }
   updateBook() {
+    this.showSpinner = true;
     this.booksService.updateBook(this.book._id.$oid, this.bookForm.value).subscribe(() => {
       this.router.navigate(['/books']);
       this.bookForm.reset();
+      this.showSpinner = false;
     });
   }
 

@@ -1,14 +1,4 @@
-
-form{
-    margin: 30px;
-}
-.error{
-    background: red;
-    color:white;
-    font-size:11px;
-    padding: 4px 8px;
-  }
-  p{
+p, div{
     font-size: 20px;
         margin:0;
 }
@@ -19,4 +9,8 @@ form{
     font-weight: 700;
     background: white;
     text-align: center;
+}
+button{
+    margin: 10px;
+    
 }

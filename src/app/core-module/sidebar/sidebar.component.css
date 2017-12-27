@@ -18,20 +18,22 @@ ul {
 
 ul li {
   text-transform: uppercase;
+  text-align: right;
   font-weight: 700;
   cursor: pointer;
   color: white;
   border-bottom: 1px solid white;
   padding: 10px;
+ 
 }
 
 ul li:hover {
-  background: #10447d;
+  background: #007bff;
   transition: linear 300ms;
 }
 
 
 
 .active {
-  background: #10447d;
+  background: #007bff;
 }

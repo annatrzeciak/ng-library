@@ -1,0 +1,47 @@
+<div class="data-container">
+  <p class="data-header info-text">Wypożycz książkę: </p>
+  <table class="table bg-light table-striped">
+    <tbody>
+      <tr>
+        <td class="text-center font-weight-bold">ID</td>
+        <td class="text-center">{{book?._id.$oid}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Tytuł</td>
+        <td class="text-center">{{book.title}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Autor</td>
+        <td class="text-center">{{book?.author}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Wydawnictwo</td>
+        <td class="text-center">{{book?.housePublishing}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">Rok wydania</td>
+        <td class="text-center">{{book?.year}}</td>
+
+      </tr>
+      <tr>
+        <td class="text-center font-weight-bold">ISBN</td>
+        <td class="text-center">{{book?.ISBN}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+  <div class="data-header info-text">Wybierz czytelnika:
+    <form [formGroup]="borrowBookForm">
+      <select formControlName='idReader'>
+        <option *ngFor="let reader of readers" value="{{reader._id.$oid}}">{{reader._id.$oid}}: {{reader.name}} {{reader.surname}}</option>
+      </select><br>
+      <button [disabled]='borrowBookForm.invalid' class="btn btn-primary" (click)="borrowThisBook()">Wypożycz</button>
+    </form>
+  </div>
+
+</div>

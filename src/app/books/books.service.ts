@@ -9,11 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class BooksService {
 
   readonly URL_DB = 'https://api.mlab.com/api/1/databases/books-db/collections/books';
-  readonly apiKey = 'apiKey=GoiXXQ40MtfUzXiKab0HjE_4gSPC2W72';
+  readonly apiKey = '?apiKey=GoiXXQ40MtfUzXiKab0HjE_4gSPC2W72';
   constructor(private http: Http) { }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get(this.URL_DB + '?s={"title":1}&' + this.apiKey)
+    return this.http.get(this.URL_DB  + this.apiKey)
       .map((res) => res.json());
   }
   getBook(id: string): Observable<Book> {

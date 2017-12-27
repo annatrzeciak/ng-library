@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReaderDetailsComponent implements OnInit {
   reader: Reader;
+  showSpinner: boolean = true;
 
   constructor(private readersService: ReadersService, private router: Router,
     private route: ActivatedRoute) { }
@@ -19,9 +20,13 @@ export class ReaderDetailsComponent implements OnInit {
 
   }
   loadReader() {
+    this.showSpinner = true;
     this.reader = this.route.snapshot.data['reader'];
+    this.showSpinner = false;
   }
   goToEditReader(reader: Reader) {
+    this.showSpinner = true;
     this.router.navigate(['/editReader', reader._id.$oid]);
+    this.showSpinner = false;
   }
 }

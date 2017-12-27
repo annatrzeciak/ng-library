@@ -14,6 +14,7 @@ export class AddReaderComponent implements OnInit {
 
   reader: Reader;
   readerForm: FormGroup;
+  showSpinner:boolean=true;
 
   constructor(private readersService: ReadersService, private router: Router,
     private formBuilder: FormBuilder, private route: ActivatedRoute) {
@@ -26,8 +27,9 @@ export class AddReaderComponent implements OnInit {
 
   }
   loadReader() {
+    this.showSpinner=true;
     this.reader = this.route.snapshot.data['reader'];
-
+this.showSpinner=false;
   }
   buildReaderForm() {
 
@@ -44,9 +46,11 @@ export class AddReaderComponent implements OnInit {
     });
   }
   addReader() {
+    this.showSpinner=true;
     this.readersService.addReader(this.readerForm.value).subscribe(() => {
       this.router.navigate(['/readers']);
       this.readerForm.reset();
+      this.showSpinner=false;
     });
   }
 

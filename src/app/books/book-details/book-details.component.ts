@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book;
+  showSpinner: boolean = true;
 
   constructor(private booksService: BooksService, private router: Router,
     private route: ActivatedRoute) { }
@@ -19,7 +20,9 @@ export class BookDetailsComponent implements OnInit {
 
   }
   loadBook() {
+    this.showSpinner=true;
     this.book = this.route.snapshot.data['book'];
+    this.showSpinner=false;
   }
   goToEditBook(book: Book) {
     this.router.navigate(['/editBook', book._id.$oid]);

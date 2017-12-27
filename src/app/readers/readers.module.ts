@@ -6,11 +6,13 @@ import { AddReaderComponent } from './add-reader/add-reader.component';
 import { ReadersListComponent } from './readers-list/readers-list.component';
 import { ReaderDetailsComponent } from './reader-details/reader-details.component';
 import { ReaderResolve } from './reader-resolve.service';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    SharedModuleModule,
     ReactiveFormsModule
   ],
   providers: [ReaderResolve],
