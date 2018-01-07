@@ -1,5 +1,5 @@
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
-<p class="data-header info-text">Edytuj {{book.title}}</p>
+<p class="data-header info-text">Edytuj: {{book.title}}</p>
 <div class="data-container">
 
   <form [formGroup]="bookForm">
@@ -43,22 +43,9 @@
         <div class="col-sm-6">
           <input formControlName="ISBN" type="text" class="form-control" placeholder="ISBN">
         </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <p class="text-right">Wypożyczona</p>
-        </div>
-        <div class="col-sm-6">
-          <input formControlName="isBorrowed" type="checkbox" class="form-control" placeholder="Wydawnictwo">
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <p class="text-right">ID czytelnika</p>
-        </div>
-        <div class="col-sm-6">
-          <input formControlName="idReader" type="text" class="form-control" placeholder="ID Czytelnika">
-        </div>
+
+
+
       </div>
       <button [disabled]="bookForm.invalid" (click)="updateBook()" type="submit" class="btn btn-primary float-right">Aktualizuj dane</button>
     </div>

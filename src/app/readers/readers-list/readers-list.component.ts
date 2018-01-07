@@ -3,7 +3,7 @@ import { ReadersService } from './../readers.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reader } from '../models/reader';
-
+declare var $:any;
 @Component({
   selector: 'app-readers-list',
   templateUrl: './readers-list.component.html',
@@ -11,6 +11,7 @@ import { Reader } from '../models/reader';
 })
 export class ReadersListComponent implements OnInit {
   readers: Reader[] = [];
+  deleteThisReader: Reader;
   showSpinner: boolean = true;
 
   constructor(private readersService: ReadersService, private router: Router) { }
@@ -33,6 +34,18 @@ export class ReadersListComponent implements OnInit {
   goToReaderDetails(reader: Reader) {
     this.showSpinner = true;
     this.router.navigate(['/readers', reader._id.$oid]);
+
+  }
+  showDeleteReaderWindow(reader) {
+    this.deleteThisReader = reader;
+    $('#deleteReader').modal('show');
     
+  }
+  deleteReader(){
+    this.showSpinner = true;
+    this.readersService.removeReader(this.deleteThisReader._id.$oid).subscribe((readers) => {
+      this.deleteThisReader = null;
+      this.loadReaders();
+    });
   }
 }

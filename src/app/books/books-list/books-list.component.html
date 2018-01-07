@@ -2,6 +2,7 @@
 <div class="content">
   <div class="row">
     <div class="col-sm-12 ">
+      <div class="info-text">Lista wszystkich książek</div>
       <table *ngIf="books.length>0; else noBooks" class="table bg-light table-striped">
         <thead>
           <tr>
@@ -21,11 +22,11 @@
 
             <td class="text-center">{{book.housePublishing}}</td>
             <td class="text-center">{{book.year}}</td>
-            <td class="text-center" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
-            <td class="text-center" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
+            <td class="text-center link" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
+            <td class="text-center link" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
             <td class="text-center more">
-              <i class="button fa fa-info btn btn-outline-primary" (click)='goToBookDetails(book)'></i>
-              <i class="button fa fa-times btn btn-outline-primary" (click)='showDeleteModalWindow(book)'></i>
+              <i class="button fa fa-info btn btn-outline-primary " (click)='goToBookDetails(book)'></i>
+              <i class="button fa fa-times btn btn-outline-primary " (click)='showDeleteModalWindow(book)'></i>
             </td>
 
           </tr>
@@ -33,7 +34,7 @@
 
       </table>
       <ng-template #noBooks *ngIf='!showSpinner'>
-        <div class="col-sm-12 no-books">
+        <div class="col-sm-12 info-text">
           <p>Brak książek do wyświetlenia</p>
         </div>
       </ng-template>
@@ -44,7 +45,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Usuń książkę</h5>
+        <h5 class="modal-title">Usuń książkę: </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -53,7 +54,7 @@
         <p>Jesteś pewnien/pewna, że chcesz usunąć książkę?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)='deleteBook(true)' data-dismiss="modal">Tak, usuń książkę </button>
+        <button type="button" class="btn btn-primary" (click)='deleteBook()' data-dismiss="modal">Tak, usuń książkę </button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
       </div>
     </div>

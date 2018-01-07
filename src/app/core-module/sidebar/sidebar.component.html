@@ -1,13 +1,14 @@
-<div class="sidebar bg-dark">
-  <img src="../../../assets/logo.png" alt="logo library" class="logo">
-  <nav>
-    <ul>
-      <li [routerLink]="['/books']" [routerLinkActive]="'active'">Książki</li>
-      <li [routerLink]="['/addBook']" [routerLinkActive]="'active'">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+<a class="navbar-brand" ><img [routerLink]="['/books']" src="../../../assets/logo.png" alt="logo library" class="logo link">
+</a> 
+    <ul class="navbar-nav ">
+      <li class='nav-item' [routerLink]="['/books']" [routerLinkActive]="'active'">Książki</li>
+      <li class='nav-item'[routerLink]="['/addBook']" [routerLinkActive]="'active'">
         <i class="material-icons">add_circle_outline</i> Dodaj książkę</li>
-      <li [routerLink]="['/readers']" [routerLinkActive]="'active'">Czytelnicy</li>
-      <li [routerLink]="['/addReader']" [routerLinkActive]="'active'">
+      <li class='nav-item'[routerLink]="['/readers']" [routerLinkActive]="'active'">Czytelnicy</li>
+      <li class='nav-item'[routerLink]="['/addReader']" [routerLinkActive]="'active'">
         <i class="material-icons">add_circle_outline</i> Dodaj czytelnika</li>
     </ul>
-  </nav>
-</div>
+
+</nav>

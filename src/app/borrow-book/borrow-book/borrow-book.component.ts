@@ -8,6 +8,8 @@ import { ReadersService } from '../../readers/readers.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
+
+
 @Component({
   selector: 'app-borrow-book',
   templateUrl: './borrow-book.component.html',
@@ -15,7 +17,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class BorrowBookComponent implements OnInit {
   book: Book;
+  reader: Reader;
   readers: Reader[] = [];
+
+  showSpinner: boolean = true;
   borrowBookForm: FormGroup;
 
   constructor(private booksService: BooksService, private readersService: ReadersService,
@@ -23,9 +28,11 @@ export class BorrowBookComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner= true;
     this.loadBook();
     this.loadReaders();
-    this.borrowBookForm = this.buildBorrowBookForm();
+      this.borrowBookForm = this.buildBorrowBookForm();
+      this.showSpinner= false;
   }
   loadBook() {
 
@@ -55,11 +62,17 @@ export class BorrowBookComponent implements OnInit {
     });
   }
   borrowThisBook() {
-
+    this.showSpinner= true;
     this.booksService.updateBook(this.book._id.$oid, this.borrowBookForm.value).subscribe(() => {
       this.router.navigate(['/books']);
 
     });
+    this.readersService.getReader(this.borrowBookForm.value.idReader).subscribe(reader => {
+      this.reader = reader;
+      this.reader.books.push(this.book._id.$oid);
+      this.readersService.updateReader(this.reader._id.$oid,this.reader).subscribe();
+    });    
+    this.showSpinner= false;
   }
-
+  
 }

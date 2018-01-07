@@ -1,3 +1,5 @@
+import { Reader } from "../../readers/models/reader";
+
 export interface Book {
     _id: {
         $oid: string

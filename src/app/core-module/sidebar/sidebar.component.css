@@ -1,14 +1,6 @@
-.sidebar {
-  width: 180px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-}
 
-.logo {
-  margin: 30px auto;
-  width: 120px;
-  display: block;
+.logo{
+  height: 40px;
 }
 
 ul {
@@ -21,19 +13,18 @@ ul li {
   text-align: right;
   font-weight: 700;
   cursor: pointer;
-  color: white;
-  border-bottom: 1px solid white;
-  padding: 10px;
+  color: rgb(255, 255, 255);
+ padding: 0 15px;
+ display: flex;
+ justify-content: center;
  
 }
 
 ul li:hover {
-  background: #007bff;
+  color: #007bff;
   transition: linear 300ms;
 }
 
-
-
 .active {
-  background: #007bff;
+  color: #007bff !important;
 }

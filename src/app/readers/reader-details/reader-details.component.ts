@@ -29,4 +29,10 @@ export class ReaderDetailsComponent implements OnInit {
     this.router.navigate(['/editReader', reader._id.$oid]);
     this.showSpinner = false;
   }
+  goToDetailsBook(bookId:string){
+    this.showSpinner=true;
+    this.router.navigate(['/books', bookId]);
+
+
+  }
 }

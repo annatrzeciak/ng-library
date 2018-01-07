@@ -1,5 +1,6 @@
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <div class="data-container">
+  <div class="info-text">Informacje o książce: </div>
   <table class="table bg-light table-striped">
     <tbody>
         <tr>
@@ -39,7 +40,7 @@
       </tr>
       <tr>
         <td class="text-center font-weight-bold">ID czytelnika</td>
-        <td class="text-center">{{book.idReader}}</td>
+        <td class="text-center link" (click)='goToBookDetails(book.idReader)'>{{book.idReader}}</td>
 
       </tr>
      

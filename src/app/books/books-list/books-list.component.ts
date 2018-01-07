@@ -2,6 +2,7 @@ import { BooksService } from './../books.service';
 import { Book } from './../models/book';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-books-list',

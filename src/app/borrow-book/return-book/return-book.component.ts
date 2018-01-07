@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Reader } from '../../readers/models/reader';
 import { ReadersService } from '../../readers/readers.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { filter } from 'rxjs/add/operator/filter';
 
 
 @Component({
@@ -13,24 +14,27 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./return-book.component.css']
 })
 export class ReturnBookComponent implements OnInit {
-
+  reader: Reader;
   book: Book;
   readers: Reader[] = [];
   borrowBookForm: FormGroup;
+  showSpinner: boolean = true;
 
   constructor(private booksService: BooksService, private readersService: ReadersService,
     private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.showSpinner = true;
     this.loadBook();
     this.loadReaders();
+    this.showSpinner = false;
   }
   loadBook() {
 
     this.book = this.route.snapshot.data['book'];
 
-  }  loadReaders() {
+  } loadReaders() {
     this.readersService.getReaders().subscribe((readers) => {
       this.readers = readers.map((reader) => {
         reader.numberBooks = reader.books.length || 0;
@@ -43,11 +47,19 @@ export class ReturnBookComponent implements OnInit {
 
   returnThisBook() {
     this.book.isBorrowed = false;
-    this.book.idReader = '';
+
+  
+    this.readersService.getReader(this.book.idReader).subscribe(reader => {
+      this.reader = reader;
+      this.reader.books.splice(this.reader.books.indexOf(this.book._id.$oid), 1);
+      this.readersService.updateReader(this.reader._id.$oid, this.reader).subscribe();
+    });
     this.booksService.updateBook(this.book._id.$oid, this.book).subscribe(() => {
       this.router.navigate(['/books']);
 
     });
+    this.showSpinner = false;
+
   }
 
 }

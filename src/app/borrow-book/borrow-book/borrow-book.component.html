@@ -1,4 +1,5 @@
 <div class="data-container">
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
   <p class="data-header info-text">Wypożycz książkę: </p>
   <table class="table bg-light table-striped">
     <tbody>
@@ -39,7 +40,8 @@
     <form [formGroup]="borrowBookForm">
       <select formControlName='idReader'>
         <option *ngFor="let reader of readers" value="{{reader._id.$oid}}">{{reader._id.$oid}}: {{reader.name}} {{reader.surname}}</option>
-      </select><br>
+      </select>
+      <br>
       <button [disabled]='borrowBookForm.invalid' class="btn btn-primary" (click)="borrowThisBook()">Wypożycz</button>
     </form>
   </div>

@@ -41,8 +41,8 @@ this.showSpinner=false;
       street: ['', Validators.required],
       houseNumber: ['', Validators.required],
       phone: ['', [Validators.required]],
-      books: '',
-      numberBooks: ''
+      books: [[]],
+      numberBooks: 0
     });
   }
   addReader() {

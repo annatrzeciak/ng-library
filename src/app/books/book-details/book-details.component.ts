@@ -27,4 +27,7 @@ export class BookDetailsComponent implements OnInit {
   goToEditBook(book: Book) {
     this.router.navigate(['/editBook', book._id.$oid]);
   }
+  goToBookDetails(idReader){
+    this.router.navigate(['/readers', idReader]);
+  }
 }
