@@ -22,11 +22,13 @@
 
             <td class="text-center">{{book.housePublishing}}</td>
             <td class="text-center">{{book.year}}</td>
-            <td class="text-center link" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
-            <td class="text-center link" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
+            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz oddać książkę" class="text-center link" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
+            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz wypożyczyć książkę"class="text-center link" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
             <td class="text-center more">
-              <i class="button fa fa-info btn btn-outline-primary " (click)='goToBookDetails(book)'></i>
-              <i class="button fa fa-times btn btn-outline-primary " (click)='showDeleteModalWindow(book)'></i>
+              <button data-toggle="tooltip" data-placement="top" title="Więcej informacji" class="button fa fa-info btn btn-outline-primary"
+                (click)='goToBookDetails(book)'></button>
+              <button data-toggle="tooltip" data-placement="top" title="Usuń książkę" class="button fa fa-times btn btn-outline-primary"
+                (click)='showDeleteModalWindow(book)'></button>
             </td>
 
           </tr>
@@ -55,6 +57,25 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)='deleteBook()' data-dismiss="modal">Tak, usuń książkę </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="returnBook" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Usuń książkę</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Jeśli chcesz usunąć książkę musisz ją zwrócić.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)='goToReturnBook()' data-dismiss="modal">Zwróć książkę</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
       </div>
     </div>

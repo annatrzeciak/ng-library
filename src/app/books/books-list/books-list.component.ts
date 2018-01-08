@@ -29,15 +29,22 @@ export class BooksListComponent implements OnInit {
 
   }
   goToBookDetails(book: Book) {
-    this.showSpinner=true;
+    this.showSpinner = true;
     this.router.navigate(['/books', book._id.$oid]);
 
   }
   showDeleteModalWindow(book: Book) {
+
     this.deleteThisBook = book;
-    $('#deleteBook').modal('show');
+    console.log(this.deleteThisBook.idReader);
+    if (this.deleteThisBook.idReader === "") {
+      $('#deleteBook').modal('toggle');
+    } else {
+      $('#returnBook').modal('toggle');
+    }
   }
   deleteBook() {
+
     this.showSpinner = true;
     this.booksService.removeBook(this.deleteThisBook._id.$oid).subscribe((books) => {
       this.deleteThisBook = null;
@@ -51,7 +58,14 @@ export class BooksListComponent implements OnInit {
 
   }
   goToReturnBook(book: Book) {
-    this.router.navigate(['/returnBook', book._id.$oid]);
-
+    console.log(book);
+    if (book === undefined) {
+      this.showSpinner = true;
+      this.router.navigate(['/returnBook', this.deleteThisBook._id.$oid])
+    } else {
+      this.showSpinner = true;
+      this.router.navigate(['/returnBook', book._id.$oid]);
+    }
   }
+
 }

@@ -54,6 +54,7 @@ export class ReturnBookComponent implements OnInit {
       this.reader.books.splice(this.reader.books.indexOf(this.book._id.$oid), 1);
       this.readersService.updateReader(this.reader._id.$oid, this.reader).subscribe();
     });
+    this.book.idReader="";
     this.booksService.updateBook(this.book._id.$oid, this.book).subscribe(() => {
       this.router.navigate(['/books']);
 
