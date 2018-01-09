@@ -21,3 +21,10 @@ body {
   text-decoration-line: underline;
   
 }
+
+.form-search{
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  margin: 15px 0;
+}

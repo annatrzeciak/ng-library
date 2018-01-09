@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddReaderComponent } from './add-reader/add-reader.component';
@@ -13,7 +13,8 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     CommonModule,
     RouterModule,
     SharedModuleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ReaderResolve],
   exports: [ReadersListComponent],

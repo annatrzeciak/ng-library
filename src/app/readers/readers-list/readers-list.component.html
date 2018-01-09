@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-sm-12 ">
       <div class="info-text">Lista czytelników: </div>
+      <label class='form-search'>Szukaj: <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz imię, nazwisko lub ID czytelnika"></label>
       <table *ngIf="readers.length>0; else noReaders" class="table bg-light table-striped">
         <thead>
           <tr>
@@ -16,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let reader of readers">
+          <tr *ngFor="let reader of readers | filterReaders : searchText">
             <td class="text-center ">{{reader.name}}</td>
             <td class="text-center">{{reader.surname}}</td>
 

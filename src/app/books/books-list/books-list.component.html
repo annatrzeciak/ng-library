@@ -3,6 +3,10 @@
   <div class="row">
     <div class="col-sm-12 ">
       <div class="info-text">Lista wszystkich książek</div>
+      
+        <label class='form-search'>Szukaj: <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz tytuł, autora lub ID książki"></label>
+        
+  
       <table *ngIf="books.length>0; else noBooks" class="table bg-light table-striped">
         <thead>
           <tr>
@@ -16,14 +20,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr [ngClass]="{'borrowed':book.isBorrowed}" *ngFor="let book of books">
+          <tr [ngClass]="{'borrowed':book.isBorrowed}" *ngFor="let book of books | filterBook : searchText">
             <td class="text-center font-weight-bold">{{book.title}}</td>
             <td class="text-center">{{book.author}}</td>
 
             <td class="text-center">{{book.housePublishing}}</td>
             <td class="text-center">{{book.year}}</td>
-            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz oddać książkę" class="text-center link" *ngIf="book.isBorrowed" (click)='goToReturnBook(book)'>oddaj książkę</td>
-            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz wypożyczyć książkę"class="text-center link" *ngIf="!book.isBorrowed" (click)='goToBorrowBook(book)'>wypożycz książkę</td>
+            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz oddać książkę" class="text-center link" *ngIf="book.isBorrowed"
+              (click)='goToReturnBook(book)'>oddaj książkę</td>
+            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz wypożyczyć książkę" class="text-center link" *ngIf="!book.isBorrowed"
+              (click)='goToBorrowBook(book)'>wypożycz książkę</td>
             <td class="text-center more">
               <button data-toggle="tooltip" data-placement="top" title="Więcej informacji" class="button fa fa-info btn btn-outline-primary"
                 (click)='goToBookDetails(book)'></button>

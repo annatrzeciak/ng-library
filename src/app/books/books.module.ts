@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModuleModule } from './../shared-module/shared-module.module';
 import { BookResolve } from './book-resolve.service';
 import { RouterModule } from '@angular/router';
@@ -10,12 +10,14 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     SharedModuleModule,
     RouterModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    FormsModule ],
   exports: [BooksListComponent],
   providers: [BookResolve],
   declarations: [BooksListComponent, BookDetailsComponent, EditBookComponent, AddBookComponent]
