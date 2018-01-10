@@ -28,3 +28,20 @@ body {
   width: 100%;
   margin: 15px 0;
 }
+button{
+  margin: 10px 0;
+}
+@media only screen and (max-width:420px){
+  #content-wrapper{
+      margin: 10px !important;
+  }
+  td{
+    font-size: 12px;
+  }
+}
+@media (max-width:300px){
+  #content-wrapper{
+      margin:5px !important
+  }
+ 
+}

@@ -3,44 +3,47 @@
   <div class="row">
     <div class="col-sm-12 ">
       <div class="info-text">Lista wszystkich książek</div>
-      
-        <label class='form-search'>Szukaj: <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz tytuł, autora lub ID książki"></label>
-        
-  
-      <table *ngIf="books.length>0; else noBooks" class="table bg-light table-striped">
-        <thead>
-          <tr>
-            <th class="text-center" scope="col">Tytuł</th>
-            <th class="text-center" scope="col">Autor</th>
 
-            <th class="text-center" scope="col">Wydawnictwo</th>
-            <th class="text-center" scope="col">Rok wydania</th>
-            <th class="text-center" scope="col"></th>
-            <th class="text-center" scope="col">Więcej</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr [ngClass]="{'borrowed':book.isBorrowed}" *ngFor="let book of books | filterBook : searchText">
-            <td class="text-center font-weight-bold">{{book.title}}</td>
-            <td class="text-center">{{book.author}}</td>
+      <label class='form-search'>Szukaj:
+        <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz tytuł, autora lub ID książki">
+      </label>
 
-            <td class="text-center">{{book.housePublishing}}</td>
-            <td class="text-center">{{book.year}}</td>
-            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz oddać książkę" class="text-center link" *ngIf="book.isBorrowed"
-              (click)='goToReturnBook(book)'>oddaj książkę</td>
-            <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz wypożyczyć książkę" class="text-center link" *ngIf="!book.isBorrowed"
-              (click)='goToBorrowBook(book)'>wypożycz książkę</td>
-            <td class="text-center more">
-              <button data-toggle="tooltip" data-placement="top" title="Więcej informacji" class="button fa fa-info btn btn-outline-primary"
-                (click)='goToBookDetails(book)'></button>
-              <button data-toggle="tooltip" data-placement="top" title="Usuń książkę" class="button fa fa-times btn btn-outline-primary"
-                (click)='showDeleteModalWindow(book)'></button>
-            </td>
+      <div class="table-responsive">
+        <table *ngIf="books.length>0; else noBooks" class="table bg-light table-striped">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Tytuł</th>
+              <th class="text-center" scope="col">Autor</th>
 
-          </tr>
-        </tbody>
+              <th class="text-center" scope="col">Wydawnictwo</th>
+              <th class="text-center" scope="col">Rok wydania</th>
+              <th class="text-center" scope="col"></th>
+              <th class="text-center" scope="col">Więcej</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [ngClass]="{'borrowed':book.isBorrowed}" *ngFor="let book of books | filterBook : searchText">
+              <td class="text-center font-weight-bold">{{book.title}}</td>
+              <td class="text-center">{{book.author}}</td>
 
-      </table>
+              <td class="text-center">{{book.housePublishing}}</td>
+              <td class="text-center">{{book.year}}</td>
+              <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz oddać książkę" class="text-center link" *ngIf="book.isBorrowed"
+                (click)='goToReturnBook(book)'>oddaj książkę</td>
+              <td data-toggle="tooltip" data-placement="top" title="Wybierz jeśli chcesz wypożyczyć książkę" class="text-center link" *ngIf="!book.isBorrowed"
+                (click)='goToBorrowBook(book)'>wypożycz książkę</td>
+              <td class="text-center more">
+                <button data-toggle="tooltip" data-placement="top" title="Więcej informacji" class="button fa fa-info btn btn-outline-primary"
+                  (click)='goToBookDetails(book)'></button>
+                <button data-toggle="tooltip" data-placement="top" title="Usuń książkę" class="button fa fa-times btn btn-outline-primary"
+                  (click)='showDeleteModalWindow(book)'></button>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
       <ng-template #noBooks *ngIf='!showSpinner'>
         <div class="col-sm-12 info-text">
           <p>Brak książek do wyświetlenia</p>
@@ -81,7 +84,7 @@
         <p>Jeśli chcesz usunąć książkę musisz ją zwrócić.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)='goToReturnBook()' data-dismiss="modal">Zwróć książkę</button>
+        <button type="button" class="btn btn-primary" (click)='returnBook()' data-dismiss="modal">Zwróć książkę</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
       </div>
     </div>

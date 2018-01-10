@@ -3,36 +3,40 @@
   <div class="row">
     <div class="col-sm-12 ">
       <div class="info-text">Lista czytelników: </div>
-      <label class='form-search'>Szukaj: <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz imię, nazwisko lub ID czytelnika"></label>
-      <table *ngIf="readers.length>0; else noReaders" class="table bg-light table-striped">
-        <thead>
-          <tr>
-            <th class="text-center" scope="col">Imię</th>
-            <th class="text-center" scope="col">Nazwisko</th>
+      <label class='form-search'>Szukaj:
+        <input class="form-control" [(ngModel)]="searchText" placeholder="wpisz imię, nazwisko lub ID czytelnika">
+      </label>
+      <div class="table-responsive">
+        <table *ngIf="readers.length>0; else noReaders" class="table bg-light table-striped">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Imię</th>
+              <th class="text-center" scope="col">Nazwisko</th>
 
-            <th class="text-center" scope="col">Adres</th>
-            <th class="text-center" scope="col">Telefon</th>
-            <th class="text-center" scope="col">Ilość wypożyczonych książek</th>
-            <th class="text-center" scope="col">Więcej</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let reader of readers | filterReaders : searchText">
-            <td class="text-center ">{{reader.name}}</td>
-            <td class="text-center">{{reader.surname}}</td>
+              <th class="text-center" scope="col">Adres</th>
+              <th class="text-center" scope="col">Telefon</th>
+              <th class="text-center" scope="col">Ilość wypożyczonych książek</th>
+              <th class="text-center" scope="col">Więcej</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reader of readers | filterReaders : searchText">
+              <td class="text-center ">{{reader.name}}</td>
+              <td class="text-center">{{reader.surname}}</td>
 
-            <td class="text-center">{{reader.street}} {{reader.houseNumber}}; {{reader.postalCode}} {{reader.city}}</td>
-            <td class="text-center">{{reader.phone}}</td>
-            <td class="text-center">{{reader.numberBooks}}</td>
-            <td class="text-center more" >
-              <i class="button fa fa-info btn btn-outline-primary" (click)='goToReaderDetails(reader)'></i>
-              <i class="button fa fa-times btn btn-outline-primary" (click)='showDeleteReaderWindow(reader)'></i>
-            </td>
+              <td class="text-center">{{reader.street}} {{reader.houseNumber}}; {{reader.postalCode}} {{reader.city}}</td>
+              <td class="text-center">{{reader.phone}}</td>
+              <td class="text-center">{{reader.numberBooks}}</td>
+              <td class="text-center more">
+                <i class="button fa fa-info btn btn-outline-primary" (click)='goToReaderDetails(reader)'></i>
+                <i class="button fa fa-times btn btn-outline-primary" (click)='showDeleteReaderWindow(reader)'></i>
+              </td>
 
-          </tr>
-        </tbody>
+            </tr>
+          </tbody>
 
-      </table>
+        </table>
+      </div>
       <ng-template #noReaders *ngIf='!showSpinner'>
         <div class="col-sm-12 no-readers">
           <p>Brak czytelników do wyświetlenia</p>
@@ -43,40 +47,40 @@
   </div>
 </div>
 <div id="deleteReader" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Usuń czytelnika</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Jesteś pewnien/pewna, że chcesz usunąć czytelnika?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)='deleteReader()' data-dismiss="modal">Tak, usuń czytelnika </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Usuń czytelnika</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Jesteś pewnien/pewna, że chcesz usunąć czytelnika?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)='deleteReader()' data-dismiss="modal">Tak, usuń czytelnika </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
       </div>
     </div>
   </div>
-  <div id="returnBook" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Usuń czytelnika</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Jeśli chcesz usunąć czytelnika musisz zwrócić wypożyczone przez niego książki.</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)='goToReturnBook()' data-dismiss="modal">Zwróć książki</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-        </div>
+</div>
+<div id="returnBook" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Usuń czytelnika</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Jeśli chcesz usunąć czytelnika musisz zwrócić wypożyczone przez niego książki.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)='goToReturnBook()' data-dismiss="modal">Zwróć książki</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
       </div>
     </div>
   </div>
+</div>

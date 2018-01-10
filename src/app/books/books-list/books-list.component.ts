@@ -10,6 +10,8 @@ declare var $: any;
   styleUrls: ['./books-list.component.css']
 })
 export class BooksListComponent implements OnInit {
+  noBooks: any;
+  searchText: string;
   books: Book[] = [];
   deleteThisBook: Book;
   showSpinner: boolean = true;
@@ -57,15 +59,15 @@ export class BooksListComponent implements OnInit {
     this.router.navigate(['/borrowBook', book._id.$oid]);
 
   }
+  returnBook() {
+    this.showSpinner = true;
+    this.router.navigate(['/returnBook', this.deleteThisBook._id.$oid])
+  }
   goToReturnBook(book: Book) {
-    console.log(book);
-    if (book === undefined) {
-      this.showSpinner = true;
-      this.router.navigate(['/returnBook', this.deleteThisBook._id.$oid])
-    } else {
-      this.showSpinner = true;
-      this.router.navigate(['/returnBook', book._id.$oid]);
-    }
+
+    this.showSpinner = true;
+    this.router.navigate(['/returnBook', book._id.$oid]);
+
   }
 
 }

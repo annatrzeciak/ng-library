@@ -1,6 +1,7 @@
 <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
 <div class="data-container">
   <div class="info-text">Informacje o książce: </div>
+  <div class="table-responsive">
   <table class="table bg-light table-striped">
     <tbody>
         <tr>
@@ -47,5 +48,6 @@
     </tbody>
 
   </table>
+  </div>
   <button class="btn btn-primary  float-right" (click)='goToEditBook(book)'>Edytuj</button>
 </div>

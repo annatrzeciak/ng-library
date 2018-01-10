@@ -11,9 +11,12 @@ declare var $: any;
   styleUrls: ['./readers-list.component.css']
 })
 export class ReadersListComponent implements OnInit {
+  noReaders:any;
+  searchText: string;
   readers: Reader[] = [];
   deleteThisReader: Reader;
   showSpinner: boolean = true;
+
 
   constructor(private readersService: ReadersService, private router: Router) { }
 

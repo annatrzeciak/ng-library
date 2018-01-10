@@ -1,6 +1,7 @@
 <div class="data-container">
   <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
   <p class="data-header info-text">Wypożycz książkę: </p>
+  <div class="table-responsive">
   <table class="table bg-light table-striped">
     <tbody>
       <tr>
@@ -36,6 +37,7 @@
     </tbody>
 
   </table>
+  </div>
   <div class="data-header info-text">Wybierz czytelnika:
     <form [formGroup]="borrowBookForm">
       <select formControlName='idReader'>
